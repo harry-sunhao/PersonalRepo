@@ -8,7 +8,7 @@ hostname = ehtc.12320.gov.cn
 function dateFormat (date, format = 'YYYY-MM-DD HH:mm:ss') {
     const config = {
         YYYY: date.getFullYear(),
-        MM: date.getMonth(),
+        MM: date.getMonth()+1,
         DD: date.getDate() - 1,
         HH: Math.round(Math.random()*(22-16)+16),
         mm: date.getMinutes(),
@@ -20,8 +20,29 @@ function dateFormat (date, format = 'YYYY-MM-DD HH:mm:ss') {
     return format
 }
 
+Date.prototype.format = function (format) {
+    var date = {
+        "M+": this.getMonth() + 1,
+        "d+": this.getDate() - 1,
+        "h+": Math.round(Math.random()*(22-16)+16),
+        "m+": this.getMinutes(),
+        "s+": this.getSeconds(),
+        "q+": Math.floor((this.getMonth() + 3) / 3),
+        "S": this.getMilliseconds()
+    };
+    if (/(y+)/i.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+    }
+    for (var k in date) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+        }
+    }
+    return format;
+};
+
 var text = '{"success":true,"msg":null,"data":[{"result":"阴性","name":"东营市人民医院","time":"2022-05-11 15:08:15"},{"result":"阴性","name":"东营市人民医院","time":"2022-05-04 18:24:05"},{"result":"阴性","name":"东营市人民医院","time":"2022-04-30 13:06:43"}],"code":0}';
 var obj = JSON.parse(text);
-obj.data[0].time = dateFormat(new Date());
+obj.data[0].time = new Date().format("YYYY-MM-DD HH:mm:ss");
 
 $done({body: JSON.stringify(obj)});
