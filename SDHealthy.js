@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?:\/\/ehtc\.sd12320\.gov\.cn\:4431\/wxHealthAccessService\/txzUser\/getNucleicAcidImp.do?$ url script-response-body https://raw.githubusercontent.com/harry-sunhao/PersonalRepo/main/SDHealthy.js?token=GHSAT0AAAAAABUHRF5UQK6F3HUO2GYVAKRYYUCSCBQ
+^https?:\/\/ehtc\.sd12320\.gov\.cn\:4431\/wxHealthAccessService\/txzUser\/getNucleicAcidImp.do?$ url script-response-body https://raw.githubusercontent.com/harry-sunhao/PersonalRepo/main/SDHealthy.js
 [mitm] 
 hostname = ehtc.12320.gov.cn
 */
@@ -32,7 +32,7 @@ var obj = JSON.parse(text);
 var dateTime=new Date();
 for (var i=0;i<3;i++)
 { 
-    dateTime = dateTime.setDate(dateTime.getDate() - 2);
+    dateTime = dateTime.setDate(dateTime.getDate() - i - 1);
     dateTime = new Date(dateTime);
     print(dateTime.format("YYYY-MM-dd hh:mm:ss"));
     obj.data[i].time = dateTime.format("YYYY-MM-dd hh:mm:ss");
