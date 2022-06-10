@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?:\/\/ehtc\.sd12320\.gov\.cn\:4431\/wxHealthAccessService\/txzUser\/getNucleicAcidImp.do?$ url script-response-body https://raw.githubusercontent.com/harry-sunhao/PersonalRepo/main/SDHealthy.js
+^https?:\/\/ehtc\.sd12320\.gov\.cn\:4431\/wxHealthAccessService\/txzUser\/getNucleicAcidImp\.do?$ url script-response-body https://raw.githubusercontent.com/harry-sunhao/PersonalRepo/main/SDHealthy.js
 [mitm] 
 hostname = ehtc.12320.gov.cn
 */
