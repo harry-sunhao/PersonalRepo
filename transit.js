@@ -1,6 +1,6 @@
 /*
 [rewrite_local]
-^https?:\/\/api\.revenuecat\.com\/v1\/subscribers?$ url script-response-body https://raw.githubusercontent.com/harry-sunhao/PersonalRepo/main/transit.js
+^https?:\/\/api\.revenuecat\.com\/v1\/subscribers.+$ url script-response-body https://raw.githubusercontent.com/harry-sunhao/PersonalRepo/main/transit.js
 [mitm] 
 hostname = api.revenuecat.com
 */
